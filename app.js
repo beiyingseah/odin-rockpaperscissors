@@ -5,18 +5,14 @@
 // Print the choice with the number ID that matches 
 
 
-var game_dict = {
-    0: "rock",
-    1: "paper",
-    2: "scissors"
-};
+ const choices = ["Rock", "Paper", "Scissors"];
 
 function computerPlay() {
-    let computerChoice = Math.floor(Math.random() * 3);
-    console.log(computerChoice);
-    return game_dict[computerChoice];
+    return choices[Math.floor(Math.random() * choices.length)];
 }
 
 function playRound(playerSelection, computerSelection) {
     // convert user's input to lowercase (user input is case-insensitive bc conversion will take care of it)
+    let playerSelection = playerSelection.toLowerCase()
+
   }
