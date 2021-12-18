@@ -16,14 +16,16 @@ function playRound(playerSelection, computerSelection, computerScore, playerScor
     // convert user's input to lowercase (user input can be case-insensitive, conversion will take care of it)
     // transform user's input to desired format: "Rock", "Paper", "Scissors"
     playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
-    
+
     console.log(`You: ${playerSelection} Computer: ${computerSelection}`);
 
     // if tie
     if (computerSelection == playerSelection) {
         console.log(`This round is a tie! Computer:${computerScore} You:${playerScore}`);
-    } // where computer wins
-    else if (
+    }
+
+     // where computer wins
+    if (
         (computerSelection == "Rock" && playerSelection == "Scissors") ||
         (computerSelection == "Scissors" && playerSelection == "Paper") ||
         (computerSelection == "Paper" && playerSelection == "Rock") 
@@ -47,6 +49,12 @@ function game() {
     let results = [computerScore, playerScore];
     for (let i = 0; i < 5; i++) {
         let playerSelection = prompt("Choose Rock, Paper or Scissors? Type an option and press enter!");
+
+        // user validation 
+        while (!(choices.includes(playerSelection))) {
+            console.log("Invalid choice. Please enter only either rock, paper, or scissors.");
+            playerSelection = prompt("Choose Rock, Paper or Scissors? Type an option and press enter!");
+        }
         results = playRound(playerSelection, computerPlay(), computerScore, playerScore);
         computerScore = results[0]
         playerScore = results[1]
@@ -62,6 +70,3 @@ function game() {
         return `You lost the game! Computer:${final_computerScore} You:${final_playerScore}`;
     }
 }
-
-
-
